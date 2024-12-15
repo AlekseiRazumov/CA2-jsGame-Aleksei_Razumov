@@ -11,6 +11,7 @@ import Cursor from "./cursor.js";
 import PlayerUI from "./playerUI.js";
 import Enemy from "./enemy.js";
 import Collectible from "./collectible.js";
+import {Images} from '../engine/resources.js';
 
 class Level extends Game {
 constructor(canvasId)
@@ -44,9 +45,9 @@ const platforms = [
     
     
     const enemies = [
-          new Enemy(100, this.canvas.height-40,1),
-          new Enemy(700, this.canvas.height-80,2),
-          new Enemy(1500, this.canvas.height-1300,1)
+          new Enemy(100, this.canvas.height-40,1, Images.enemy),
+          new Enemy(700, this.canvas.height-80,2, Images.enemy2),
+          new Enemy(1500, this.canvas.height-1300,1, Images.enemy)
         ];
         for (const enemy of enemies) {
           this.addGameObject(enemy);

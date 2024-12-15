@@ -14,9 +14,9 @@ import Player from './player.js';
 import Platform from './platform.js';
 
 class Enemy extends GameObject {
-    constructor(x, y, type) {
+    constructor(x, y, type, image) {
     super(x, y);
-    this.addComponent(new Renderer('green', 50, 50, Images.enemy));
+    this.addComponent(new Renderer('green', 50, 50, image));
 
     this.addComponent(new Physics({ x: 0, y: 0 }, { x: 0, y: 0 }));
 

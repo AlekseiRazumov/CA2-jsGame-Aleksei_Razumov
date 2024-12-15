@@ -19,7 +19,7 @@ import Cursor from './cursor.js'
 class Player extends GameObject {
 constructor(x, y) {
     super(x, y); 
-    this.renderer = new Renderer('blue', 35, 50, Images.player); 
+    this.renderer = new Renderer('blue', 50, 30, Images.player); 
     this.addComponent(this.renderer);
      this.addComponent(new Physics({ x: 0, y: 0 }, { x: 0, y: 0 }, { x: 0, y: 0 }));
      this.isOnPlatform = false;

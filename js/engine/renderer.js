@@ -51,7 +51,7 @@ class Renderer extends Component {
       ctx.save();
       ctx.translate((x + w/2), (y + h/2));
       if(this.gameObject instanceof Player ){
-      ctx.rotate(atan);
+      ctx.rotate(atan+Math.PI);
   }
       ctx.drawImage(this.image, -(w/2), -h/2, w, h);
       ctx.restore();
