@@ -12,6 +12,7 @@ super(canvasId);
 let startBtn = new Button(this.canvas.width/2,this.canvas.height/2,100,40, 'blue', "Start");
     this.addGameObject(startBtn);
     this.camera.target = startBtn; 
+    this.reset();
   }
 }
 export default LoadingScreen;

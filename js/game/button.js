@@ -7,6 +7,7 @@ import GameObject from '../engine/gameobject.js';
 import Level from './level.js';
 import Renderer from "../engine/renderer.js";
 import {AudioFiles} from '../engine/resources.js';
+import LoadingScreen from './loadingScreen.js';
 class Button extends GameObject
 {
      constructor(x, y, w, h, color, str) {
@@ -15,8 +16,7 @@ class Button extends GameObject
       this.height = h;
       this.color = color;
       this.text = str;
-      AudioFiles.bgm.play();
-      AudioFiles.bgm.volume *=0.3;
+     
 
       this.addComponent(new Renderer('skyblue'));
       document.addEventListener('click', this.click.bind(this), false);
@@ -30,7 +30,7 @@ class Button extends GameObject
       ctx.textAlign = "center";
       ctx.font = "20px serif";
       ctx.fillStyle="white";
-      ctx.fillText(this.text, this.game.camera.x + this.x + this.width/2, this.game.camera.y + this.y + 15);
+      ctx.fillText(this.text, this.game.camera.x + this.x + this.width/2, this.game.camera.y + this.y + this.height/2);
   }
     click(event)
     {
@@ -43,8 +43,19 @@ class Button extends GameObject
 
           if(this.text === "Start")
           {
+               AudioFiles.bgm.play();
+               AudioFiles.bgm.volume =0.3;
               const level = new Level(this.game.canvas.id);
               level.start();
+          }
+          if(this.text === "Try Again")
+          {
+            this.game.reset();
+            
+            const menu = new LoadingScreen('gameCanvas');
+            
+            menu.start();
+
           }
           if(this.text === "Pause")
           {

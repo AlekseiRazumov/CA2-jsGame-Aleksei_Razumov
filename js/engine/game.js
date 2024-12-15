@@ -45,11 +45,11 @@ class Game {
     this.deltaTime = (currentFrameTime - this.lastFrameTime) / 1000;
     // Update the last frame time.
     this.lastFrameTime = currentFrameTime;
-if(!this.pause)
-    {
-        this.update();
-        this.camera.update();
-}
+    if(!this.pause)
+        {
+            this.update();
+            this.camera.update();
+    }
 
     // Update all game objects and the camera.
    

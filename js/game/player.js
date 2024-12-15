@@ -16,6 +16,7 @@ import ParticleSystem from '../engine/particleSystem.js';
 import Projectile from './projectile.js'
 import Cursor from './cursor.js'
 import {AudioFiles} from '../engine/resources.js';
+import Button from './button.js';
 
 class Player extends GameObject {
 constructor(x, y) {
@@ -69,6 +70,12 @@ startJump() {
    collidedWithEnemy() {
     if (!this.isInvulnerable) {
           this.lives--;
+          if(this.lives<=0){
+              this.game.pauseGame();
+              this.game.addGameObject(new Button(this.game.canvas.width/2,this.game.canvas.height/2,100,40,'blue', "Try Again")); 
+              
+              
+          }
           this.isInvulnerable = true;
     setTimeout(() => {
             this.isInvulnerable = false;
