@@ -18,7 +18,7 @@ class Button extends GameObject
       this.text = str;
      
 
-      this.addComponent(new Renderer('skyblue'));
+      this.addComponent(new Renderer('skyblue',0,0,0,0));
       document.addEventListener('click', this.click.bind(this), false);
   }
  

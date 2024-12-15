@@ -8,7 +8,7 @@ import GameObject from '../engine/gameobject.js';
 import Renderer from '../engine/renderer.js';
 import Physics from '../engine/physics.js';
 import {Images} from '../engine/resources.js';
-
+import Collectible from "./collectible.js";
 import Projectile from './projectile.js'
 import Player from './player.js';
 import Platform from './platform.js';
@@ -25,6 +25,7 @@ class Enemy extends GameObject {
         this.movingRight = true;
         this.type=type;
         this.canFire=true;
+        this.lives=10;
       }
       update(deltaTime){
            const physics = this.getComponent(Physics);
@@ -72,47 +73,6 @@ class Enemy extends GameObject {
            }
            
 
-           /*     if (this.movingRight) {
-                if (this.movementDistance < this.movementLimit) {
-                        physics.velocity.x = 50;
-                this.movementDistance += Math.abs(physics.velocity.x) * deltaTime;
-                this.getComponent(Renderer).gameObject.direction = 1;
-              } else {
-                this.movingRight = false;
-                this.movementDistance = 0;
-              }
-            }
-            else {
-            if (this.movementDistance < this.movementLimit) {
-                    physics.velocity.x = -50;
-                    this.movementDistance += Math.abs(physics.velocity.x) * deltaTime;
-                    this.getComponent(Renderer).gameObject.direction = -1;
-                  } else {
-            this.movingRight = true;
-                    this.movementDistance = 0;
-                  }
-                }
-                
-         *
-           
-             const platforms = this.game.gameObjects.filter(obj => obj instanceof Platform);
-             this.isOnPlatform = false;
-             for (const platform of platforms) {
-              if (physics.isColliding(platform.getComponent(Physics))) {
-                // If it is, stop its vertical movement and position it on top of the platform
-                physics.velocity.y = 0;
-                physics.acceleration.y = 0;
-                this.y = platform.y - this.getComponent(Renderer).height;
-                this.isOnPlatform = true;
-                }
-                const player = this.game.gameObjects.find(obj => obj instanceof Player);
-                
-                
-
-                
-    }
-         * 
-            */
     
     super.update(deltaTime);
 
@@ -121,7 +81,15 @@ class Enemy extends GameObject {
       
 hit()
     {
-        this.game.removeGameObject(this);
+        
+        this.lives--;
+        if(this.lives<=0){
+            if(Math.floor(Math.random() * 5)===0){
+                this.game.addGameObject(new Collectible(this.x,this.y,20,20));
+            };
+            this.game.removeGameObject(this);
+        }
+            
     }
 }
 export default Enemy;

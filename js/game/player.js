@@ -34,7 +34,7 @@ constructor(x, y) {
     this.jumpTime = 1.0;
     this.jumpTimer = 0;
     this.score=0;
-    this.lives=3;
+    this.lives=100;
     this.Invulnerable=false;
     this.canDash=true;
 
@@ -42,12 +42,12 @@ constructor(x, y) {
 
 }
 emitCollectParticles(collectible) {
-const particleSystem = new ParticleSystem(collectible.x, collectible.y, 'yellow', 20, 1, 0.5);
+const particleSystem = new ParticleSystem(collectible.x, collectible.y, 'red', 20, 1, 0.5);
     this.game.addGameObject(particleSystem);
   }
 
 collect(collectible) {
-	this.score += collectible.value;
+	this.lives += collectible.value;
     console.log(`Score: ${this.score}`);
     this.emitCollectParticles(collectible);
   }
@@ -79,7 +79,7 @@ startJump() {
           this.isInvulnerable = true;
     setTimeout(() => {
             this.isInvulnerable = false;
-          }, 2000);
+          }, 500);
         }
   }
 
