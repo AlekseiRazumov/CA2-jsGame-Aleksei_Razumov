@@ -12,6 +12,7 @@ import PlayerUI from "./playerUI.js";
 import Enemy from "./enemy.js";
 import Collectible from "./collectible.js";
 import {Images} from '../engine/resources.js';
+import Button from './button.js';
 
 class Level extends Game {
 constructor(canvasId)
@@ -55,6 +56,7 @@ const platforms = [
         
          this.addGameObject(new PlayerUI(10, 10));
 
+this.addGameObject(new Button(this.canvas.width-110,10,100,40,'lightGrey', "Pause")); 
 
 }
 
