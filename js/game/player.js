@@ -168,7 +168,7 @@ update(deltaTime) {
             dirX=dirX/dirLength;
             dirY=dirY/dirLength;
             let projectile = new Projectile(this.x + (renderer.width/2) , 
-            this.y + renderer.height/2, 20,20,Images.projectile1, "PlayerProjectile", dirX, dirY, 1000);
+            this.y + renderer.height/2, 10,10,Images.projectile1, "PlayerProjectile", dirX, dirY, 1000);
             this.game.addGameObject(projectile);
          
             

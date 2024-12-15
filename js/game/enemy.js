@@ -44,7 +44,7 @@ class Enemy extends GameObject {
                if (physics.isColliding(player.getComponent(Physics))) {
                   player.collidedWithEnemy();
                 }
-                if(dirLength<=10){
+                if(dirLength<=30){
                    physics.velocity.x=0;
                    physics.velocity.y=0;
                }
@@ -61,7 +61,7 @@ class Enemy extends GameObject {
                
                if(this.canFire){
                     let projectile = new Projectile(this.x + (renderer.width/2) , 
-                    this.y + renderer.height/2, 20,20,Images.projectile1, "EnemyProjectile", dirX, dirY, 300);
+                    this.y + renderer.height/2, 10,10,Images.projectile2, "EnemyProjectile", dirX, dirY, 300);
                     this.game.addGameObject(projectile);
                      this.canFire = false;
                     setTimeout(() => {
