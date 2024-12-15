@@ -15,6 +15,7 @@ import { Images } from '../engine/resources.js';
 import ParticleSystem from '../engine/particleSystem.js'; 
 import Projectile from './projectile.js'
 import Cursor from './cursor.js'
+import {AudioFiles} from '../engine/resources.js';
 
 class Player extends GameObject {
 constructor(x, y) {
@@ -36,6 +37,7 @@ constructor(x, y) {
     this.Invulnerable=false;
     this.canDash=true;
 
+    
 
 }
 emitCollectParticles(collectible) {
@@ -75,6 +77,8 @@ startJump() {
   }
 
 update(deltaTime) {
+   
+
     const physics = this.getComponent(Physics); // Get physics component
     const input = this.getComponent(Input); // Get input component
     const renderer = this.getComponent(Renderer);

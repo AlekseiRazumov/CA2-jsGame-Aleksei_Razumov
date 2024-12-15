@@ -6,6 +6,7 @@
 import GameObject from '../engine/gameobject.js';
 import Level from './level.js';
 import Renderer from "../engine/renderer.js";
+import {AudioFiles} from '../engine/resources.js';
 class Button extends GameObject
 {
      constructor(x, y, w, h, color, str) {
@@ -14,7 +15,9 @@ class Button extends GameObject
       this.height = h;
       this.color = color;
       this.text = str;
-     
+      AudioFiles.bgm.play();
+      AudioFiles.bgm.volume *=0.3;
+
       this.addComponent(new Renderer('skyblue'));
       document.addEventListener('click', this.click.bind(this), false);
   }
@@ -46,10 +49,14 @@ class Button extends GameObject
           if(this.text === "Pause")
           {
               this.game.pauseGame();
-              if(this.game.pause)
-                 this.game.audioManager.PauseSound("bgm");
-             else
-                 this.game.audioManager.PlaySound("bgm");
+               if(this.game.pause){
+                    console.log("wwfw");
+                    AudioFiles.bgm.pause();
+                }
+
+                else
+                    AudioFiles.bgm.play();
+              
           }
         }    
     }

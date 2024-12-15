@@ -17,7 +17,7 @@ import Button from './button.js';
 class Level extends Game {
 constructor(canvasId)
  {
-     
+      
 super(canvasId);
 const player = new Player(50, this.canvas.height / 2 - 25);
     this.addGameObject(player);
