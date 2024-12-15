@@ -44,7 +44,7 @@ class Enemy extends GameObject {
                if (physics.isColliding(player.getComponent(Physics))) {
                   player.collidedWithEnemy();
                 }
-                if(dirLength<=50){
+                if(dirLength<=10){
                    physics.velocity.x=0;
                    physics.velocity.y=0;
                }

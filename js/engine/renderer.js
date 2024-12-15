@@ -3,6 +3,7 @@ import Component from './component.js';
 import Cursor from '../game/cursor.js'
 import Game from "./game.js";
 import Player from "../game/player.js";
+import Enemy from "../game/enemy.js";
 // The Renderer class extends Component and handles the visual representation of a game object.
 class Renderer extends Component {
   // The constructor initializes the renderer component with optional color, width, height, and image.
@@ -29,20 +30,40 @@ class Renderer extends Component {
       const cursor = this.gameObject.game.gameObjects.find((obj) => obj instanceof Cursor );
       const cursorX=cursor.x;
       const cursorY=cursor.y;
-      const distanceX = x-cursorX;
-      const distanceY = y-cursorY;
-      const tan = distanceY/distanceX;
       let atan = 0;
       
-          if(distanceX>0){
-            atan = Math.atan(tan);
-        }
-        if(distanceX<0){
-             atan = (Math.atan(tan)+Math.PI);
-        }
+      if(this.gameObject instanceof Player ){
+            const distanceX = x-cursorX;
+            const distanceY = y-cursorY;
+            const tan = distanceY/distanceX;
+            atan = 0;
+
+              if(distanceX>0){
+                  atan = Math.atan(tan);
+              }
+              if(distanceX<0){
+                   atan = (Math.atan(tan)+Math.PI);
+              }
+      }
       
       
       
+      const player = this.gameObject.game.gameObjects.find((obj) => obj instanceof Player );
+      const playerX=player.x;
+      const playerY=player.y;
+      if(this.gameObject instanceof Enemy){
+            const distanceX = x-playerX;
+            const distanceY = y-playerY;
+            const tan = distanceY/distanceX;
+            atan = 0;
+
+              if(distanceX>0){
+                  atan = Math.atan(tan);
+              }
+              if(distanceX<0){
+                   atan = (Math.atan(tan)+Math.PI);
+              }
+      }
    
       
       // Check if the image should be flipped horizontally based on the direction of the game object.
@@ -50,7 +71,7 @@ class Renderer extends Component {
       
       ctx.save();
       ctx.translate((x + w/2), (y + h/2));
-      if(this.gameObject instanceof Player ){
+      if(this.gameObject instanceof Player || this.gameObject instanceof Enemy ){
       ctx.rotate(atan+Math.PI);
   }
       ctx.drawImage(this.image, -(w/2), -h/2, w, h);
