@@ -43,15 +43,7 @@ const platforms = [
     for (const platform of platforms) {
       this.addGameObject(platform);
     }
-    const collectibles = [
-      new Collectible(0,this.canvas.height-40,20,20),
-      new Collectible(500,this.canvas.height-50,20,20),
-      new Collectible(1500,this.canvas.height-40,20,20),
-      new Collectible(1800,this.canvas.height-40,20,20),
-      new Collectible(2100,this.canvas.height-40,20,20) ];
-    for (const collectible of collectibles) {
-      this.addGameObject(collectible);
-    }
+    
     
     
     const enemies = [
