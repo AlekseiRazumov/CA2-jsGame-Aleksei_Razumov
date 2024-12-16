@@ -48,6 +48,8 @@ class Projectile extends GameObject
                     o.collidedWithEnemy();
                     this.game.removeGameObject(this);
                 }
+                else if(o instanceof Platform)
+                     this.game.removeGameObject(this);
                 
                 
             }
