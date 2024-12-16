@@ -36,7 +36,7 @@ const platforms = [
       new Platform(-800,800,600,40),
       new Platform(-800,1200,600,40),
       
-      new Platform(200,200,40,600),
+      new Platform(200,200,40,640),
       new Platform(200,1200,40,600),
       new Platform(-200,200,40,640),
       new Platform(-200,1200,40,600)];
@@ -56,18 +56,21 @@ const platforms = [
     
     const enemies = [
           new Enemy(100, this.canvas.height-40,1, Images.enemy),
-          new Enemy(700, this.canvas.height-80,2, Images.enemy2),
-          new Enemy(1500, this.canvas.height-1300,1, Images.enemy)
+          new Enemy(700, this.canvas.height-80,2, Images.enemy2)
+         
         ];
-        for (const enemy of enemies) {
-          this.addGameObject(enemy);
-        }
+    
+       
+         for (const enemy of enemies) {
+              this.addGameObject(enemy);
+            }
         
          this.addGameObject(new PlayerUI(10, 10));
 
 this.addGameObject(new Button(this.canvas.width-110,10,100,40,'lightGrey', "Pause")); 
 
 }
+
 
 }
 

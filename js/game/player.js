@@ -17,6 +17,8 @@ import Projectile from './projectile.js'
 import Cursor from './cursor.js'
 import {AudioFiles} from '../engine/resources.js';
 import Button from './button.js';
+import Enemy from "./enemy.js";
+import Level from './level.js';
 
 class Player extends GameObject {
 constructor(x, y) {
@@ -33,11 +35,12 @@ constructor(x, y) {
     this.jumpForce = 300;
     this.jumpTime = 1.0;
     this.jumpTimer = 0;
-    this.score=0;
-    this.lives=100;
+    this.wave=1;
+    this.lives=10;
     this.Invulnerable=false;
     this.canDash=true;
-
+     this.waveUp=true;
+   
     
 
 }
@@ -48,7 +51,7 @@ const particleSystem = new ParticleSystem(collectible.x, collectible.y, 'red', 2
 
 collect(collectible) {
 	this.lives += collectible.value;
-    console.log(`Score: ${this.score}`);
+   
     this.emitCollectParticles(collectible);
   }
 startJump() {
@@ -84,6 +87,23 @@ startJump() {
   }
 
 update(deltaTime) {
+    
+   
+    if(this.game.gameObjects.filter((obj) => obj instanceof Enemy ).length<=0 &&  this.waveUp && this.wave<5){
+        this.wave++;
+        this.waveUp=false;
+      
+        console.log("hi");
+        setTimeout(() => {
+            this.waveUp = true;
+           
+            for (let i=0; i<10*this.wave; i++) {
+                 this.game.addGameObject(new Enemy(Math.floor(Math.random() * 2000)-1000, Math.floor(Math.random() * 2000), 1,Images.enemy));
+                 this.game.addGameObject(new Enemy(Math.floor(Math.random() * 2000)-1000, Math.floor(Math.random() * 2000), 2,Images.enemy2));
+            
+                }
+          }, 2000);
+    }
    
 
     const physics = this.getComponent(Physics); // Get physics component
