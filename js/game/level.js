@@ -26,11 +26,20 @@ this.addGameObject(cursor);
 
  this.camera.target = player;
 const platforms = [
-      new Platform(0,this.canvas.height-20,400,400),
-      new Platform(500,this.canvas.height-20,400,20),
-      new Platform(1500,this.canvas.height-80,200,80),
-      new Platform(1800,this.canvas.height-120,200,120),
-      new Platform(2100,this.canvas.height-20,400,20) ];
+      new Platform(-1000,0,40,2000),
+      new Platform(-1000,0,2000,40),
+      new Platform(-1000,2000,2000,40),
+      new Platform(1000,0,40,2040),
+      
+      new Platform(200,800,600,40),
+      new Platform(200,1200,600,40),
+      new Platform(-800,800,600,40),
+      new Platform(-800,1200,600,40),
+      
+      new Platform(200,200,40,600),
+      new Platform(200,1200,40,600),
+      new Platform(-200,200,40,640),
+      new Platform(-200,1200,40,600)];
     for (const platform of platforms) {
       this.addGameObject(platform);
     }
